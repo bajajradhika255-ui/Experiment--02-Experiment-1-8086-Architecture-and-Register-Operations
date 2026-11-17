@@ -52,10 +52,39 @@ required.
 
 ### Simplified Block Diagram
 
-<img width="600" height="456" alt="image" src="https://github.com/user-attachments/assets/1d1135ac-67da-4330-8d2a-419d3a170f7a" />
-
-
-
+``` text
+                 +-----------------------------------+
+                 |          8086 MICROPROCESSOR     |
+                 |                                   |
+Memory / I/O <-->+-----------------------------------+<--> System Bus
+                 |       Bus Interface Unit (BIU)    |
+                 |  +-----------------------------+  |
+                 |  | Segment Registers            |  |
+                 |  | CS, DS, SS, ES               |  |
+                 |  +-----------------------------+  |
+                 |  | Instruction Pointer (IP)     |  |
+                 |  +-----------------------------+  |
+                 |  | 6-byte Instruction Queue     |  |
+                 |  +-----------------------------+  |
+                 |  | Address Generation / Bus     |  |
+                 |  | Control                      |  |
+                 |  +---------------+-------------+  |
+                 |                  |                |
+                 |       Instruction/Data Interface  |
+                 |                  |                |
+                 |       Execution Unit (EU)         |
+                 |  +-----------------------------+  |
+                 |  | Instruction Decoder &       |  |
+                 |  | Control Circuitry           |  |
+                 |  +-----------------------------+  |
+                 |  | ALU                         |  |
+                 |  +-----------------------------+  |
+                 |  | AX, BX, CX, DX               |  |
+                 |  | SP, BP, SI, DI               |  |
+                 |  | Flag Register                |  |
+                 |  +-----------------------------+  |
+                 +-----------------------------------+
+```
 
 ### Working Principle
 
@@ -147,7 +176,7 @@ Write an 8086 assembly language program to exchange the contents of two
   VALUE2                       `2222H`           `1111H`
 
 ### Explanation
-
+The 8086 cannot move data directly from one memory location to another with a single MOV, so registers are used as temporary storage. VALUE1 is loaded into AX and VALUE2 into BX. BX is then written to VALUE1 and AX to VALUE2, so the two values are exchanged. No data is lost because both original values are held in registers before either memory location is overwritten.
   
 ------------------------------------------------------------------------
 
@@ -162,6 +191,10 @@ Write an 8086 assembly language program to exchange the contents of two
 7.  Record the observed results and compare them with the expected
     results.
 ## Screenshot of the results 
+
+<img width="1600" height="770" alt="WhatsApp Image 2026-11-17 at 4 33 24 PM" src="https://github.com/user-attachments/assets/a82b8b4e-9d50-46fd-90d7-e5d798ebbf14" />
+
+<img width="1600" height="768" alt="WhatsApp Image 2026-11-17 at 4 33 53 PM" src="https://github.com/user-attachments/assets/c8a6d256-6821-42cc-b0d9-b31fc9404a13" />
 
 
 
